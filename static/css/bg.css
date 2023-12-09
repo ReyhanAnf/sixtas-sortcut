@@ -1,0 +1,16 @@
+.tdark{
+    background-image: url("../img/header.png");
+    }
+
+
+.tlight{
+    background-image: url("../img/light.png");
+    }
+    
+    
+.svgd{
+  fill: 'white';
+}
+.svgl{
+  fill: 'black';
+}
