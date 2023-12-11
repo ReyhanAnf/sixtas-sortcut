@@ -17,7 +17,7 @@
       <h1 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
         Selamat Datang
         <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
-          {{ content.first_name }}
+          {{ content.first_name }} ,
         </span>
          Selamat Belajar!!!
       </h1>
@@ -35,8 +35,18 @@
         >
           Logout
         </a>
+        <br/>
+        <h2 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
+        Data Siswa Yang Mendaftar</h2>
 
-          
+          {% for profile in data_profile %}
+          <div class="bg-gradient-to-r from-purple-900 to-gray-900 opacity-75 w-full shadow-lg my-2 rounded-lg px-8 pt-6 pb-8 mb-4 text-white">
+              <h2 class="text-xl">{{ profile.nama_lengkap }}</h2>
+              <p>Kelas: {{ profile.kelas }} {{ profile.jurusan }}</p>
+              <p>Hobi: {{ profile.hobi }}</p>
+              <p>Jenis Kelamin : {{ profile.jenis_kelamin }}</p>
+          </div>
+          {% endfor %}
      
     </div>
 

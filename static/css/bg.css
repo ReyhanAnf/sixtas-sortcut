@@ -14,3 +14,7 @@
 .svgl{
   fill: 'black';
 }
+
+#profileu{
+  background-image: url("../img/profile.jpeg");
+}
