@@ -103,7 +103,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'djangodoc',
-        'HOST': '172.16.17.11',#179.169.0.242,
+        'HOST': '172.16.16.67',#179.169.0.242,
         'PORT': '3306',
         'USER': 'root',
         'PASSWORD': 'root',
@@ -111,7 +111,7 @@ DATABASES = {
 }
 
 
-ALLOWED_HOSTS = ["179.169.0.241", "127.0.0.1", "172.16.15.20", "172.16.17.11"]
+ALLOWED_HOSTS = ["179.169.0.241", "127.0.0.1", "172.16.15.20", "172.16.17.11", '172.16.16.67']
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
