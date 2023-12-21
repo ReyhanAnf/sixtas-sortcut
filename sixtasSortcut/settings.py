@@ -103,7 +103,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'djangodoc',
-        'HOST': '172.16.16.67',#179.169.0.242,
+        'HOST': '179.169.0.254',#179.169.0.242,
         'PORT': '3306',
         'USER': 'root',
         'PASSWORD': 'root',

@@ -26,7 +26,7 @@ class FormRegister(forms.Form):
         widget= forms.TextInput(attrs={'class': 'shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out', 'type': 'text'}),
     )
     email = forms.EmailField(
-        widget= forms.TextInput(attrs={'class': 'shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out', 'type': 'text'}),
+        widget= forms.TextInput(attrs={'id':'email-form','class': 'shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out', 'type': 'text'}),
         required= False
     )
     

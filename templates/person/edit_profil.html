@@ -11,6 +11,9 @@
   <meta name="keywords" content="">
   <meta name="author" content="">
 
+  <!-- ajax for form -->
+<!--  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  -->
   <!-- Font Awesome if you need it
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
   -->
@@ -37,7 +40,7 @@
 			
 			<h1 class="text-3xl font-bold pt-8 lg:pt-0">{{ user.first_name }}</h1>
 			<div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-75"> {{ user.username }}</div>
-      <form action="" method="POST">
+      <form action="" method="POST" id="edit_profile">
        {% csrf_token %}
       <h1 class="my-4 text-xl md:text-5xl font-bold leading-tight text-center md:text-left">
         Lengkapi Profilmu
@@ -79,13 +82,22 @@
         </div> 
 
         <div class="flex items-center justify-between pt-4">
+          <a
+            class="bg-gradient-to-r from-purple-800 to-green-500 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+            href="{% url 'profil' %}"
+          >
+            Back
+          </a>
           <button
             class="bg-gradient-to-r from-purple-800 to-green-500 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
             type="submit"
             value="checknis"
           >
-            Lanjut
+            Save
           </button>
+          <div>
+            {{ success }}
+          </div>
         </div>
       </form>
 
@@ -130,6 +142,29 @@
   
   {% endif %}
 	{% endblock content %}
+	
+	
+<!-- <script type="text/javascript">
+  $(document).on("submit", "#edit_profile", function(e){
+    e.preventDefault();
+    
+    $.ajax({
+      type:"POST",
+      url:"/users/profile/edit/save",
+      data:{
+        email: $('#email-form').val(),
+        kelas: $('#kelas-form').val(),
+        jurusan: $('#jurusan-form').val(),
+        jenis_kelamin: $('#jk-form').val(),
+        hobi: $('#hobi-form').val(),
+        csrfmiddlewaretoken:$('#csrfmiddlewaretoken').val()
+      },
+      success: function(data){
+        $('#message').html(data)
+      }
+    })
+  })
+</script> -->
 </body>
 
 </html>

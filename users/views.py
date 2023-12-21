@@ -25,7 +25,7 @@ def profil_view(request, username):
   else:
     return redirect('../' + request.user.username + '/')
     
-def add_profil(request):
+def add_profile(request):
   username = request.user.username
   person = models.Person()
   nis = username
@@ -54,7 +54,10 @@ def add_profil(request):
       user_change.save()
       userAuth_change.save()
       
+      success= "user " + username + " telah sukses di edit"
       #models.Person.objects.create(nis=nis, email=email, jenis_kelamin=jenis_kelamin, kelas=kelas, jurusan=jurusan, hobi=hobi)
-      return redirect('../../../' + username + "/")
-      
-  return render(request, 'person/edit_profil.html', {'form': form,'formAuth':formAuth, 'username': username})
+      return redirect('../edit')
+    
+  return render(request, 'person/edit_profil.html', {'form': form,'formAuth':formAuth, 'username': username, 'succes':""})
+
+
