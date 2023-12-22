@@ -15,6 +15,7 @@
       <form action="" method="POST" class="flex">
         {% csrf_token %}
         <input
+          name="search_user"
           type="text"
           placeholder="Search by NIS or Name"
           class="shadow appearance-none border rounded w-3/4 p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
@@ -37,6 +38,7 @@
           <h4 class="text-xl">{{ user.nis }}</h4>
         </div>
         {% endfor %}
+        <div>{{ message }}</div>
       </div>
     </div>
 
