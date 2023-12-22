@@ -18,27 +18,33 @@
           name="search_user"
           type="text"
           placeholder="Search by NIS or Name"
-          class="shadow appearance-none border rounded w-3/4 p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+          class="shadow bg-gray-900 border border-purple-800 rounded w-3/4 m-2 p-3 text-gray-200 leading-tight focus:ring ring-purple-800 transform transition duration-300 ease-in-out"
         />
         <button
-          class="w-1/4 bg-gradient-to-r from-purple-800 to-green-500 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+          class="w-1/5 m-2 bg-gradient-to-r from-purple-800 to-gray-900 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
           type="submit"
           value="searchsomeone"
         >
           Cari
         </button>
       </form>
-
+      <br/>
       <div>
         {% for user in content %}
         <div
-          class="bg-gradient-to-r from-purple-900 to-gray-900 opacity-75 w-full shadow-lg my-2 rounded-lg px-8 pt-6 pb-8 mb-4 text-white"
+          class="flex bg-gray-900 bg-opacity-25 w-full shadow-xl shadow-purple-600 my-1 rounded-lg px-6 pt-4 pb-6 mb-4 text-gray-200 border-b-2 border-gray-700 transform transition hover:scale-105 duration-300 ease-in-out"
         >
-          <h2 class="text-xl">{{ user.nama_lengkap }}</h2>
-          <h4 class="text-xl">{{ user.nis }}</h4>
+          <div class=" bg-grey-700 bg-opacity-100">
+            <img src="{% static 'img/profile.jpeg' %}" class="rounded-full h-12 w-12 ring-1 ring-gray-700 mr-3"/>
+          </div>
+          <div>
+            <h2 class="text-xl">{{ user.nama_lengkap }}</h2>
+            <h4 class="text-xs text-gray-400">{{ user.nis }}</h4>
+          </div>
+
         </div>
         {% endfor %}
-        <div>{{ message }}</div>
+        <div>TIPS! Usahakan Mencari dengan kata kunci minimal 4 karakter</div>
       </div>
     </div>
 
