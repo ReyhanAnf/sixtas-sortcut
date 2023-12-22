@@ -36,7 +36,7 @@
           Logout
         </a>
         <br/>
-        <h2 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
+        {% comment %} <h2 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
         Data Siswa Yang Mendaftar</h2>
 
           {% for profile in data_profile %}
@@ -46,7 +46,7 @@
               <p>Hobi: {{ profile.hobi }}</p>
               <p>Jenis Kelamin : {{ profile.jenis_kelamin }}</p>
           </div>
-          {% endfor %}
+          {% endfor %} {% endcomment %}
      
     </div>
 

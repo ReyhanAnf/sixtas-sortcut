@@ -10,5 +10,5 @@ class Person(models.Model):
     nis = models.CharField(max_length=50, blank=True)
     kelas = models.CharField(max_length=50, blank=True )
     jurusan = models.CharField(max_length=50, blank=True)
-    hobi = models.CharField(max_length=50, blank=True)
+    bio = models.CharField(max_length=50, blank=True)
     jenis_kelamin = models.CharField(max_length=50, blank=True)

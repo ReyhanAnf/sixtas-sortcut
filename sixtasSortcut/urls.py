@@ -20,7 +20,6 @@ import main
 import users
 from users import views as users
 from rest_framework import routers
-from search import views as vsearch
 #from api.views import *
 
 # router = routers.DefaultRouter()
@@ -33,7 +32,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('user/', include('logreg.urls')),
     #path('api/', include(router.urls)),
-    path('search/', vsearch.index, name="search-user"),
+    path('search/', include('search.urls') , name="search"),
     
     path('<username>/', users.profil_view),
     #path('api-auth/', include('rest_framework.urls', namespace="rest_framework")),

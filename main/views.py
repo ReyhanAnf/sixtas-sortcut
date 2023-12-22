@@ -24,26 +24,23 @@ def dashboard(request):
   userperson = [
       ]
   if request.user.username:
-    person_data = Person.objects.values_list("nis", "kelas", "jurusan", "jenis_kelamin", "hobi")
-    user_data = User.objects.values_list("username", "first_name", "last_name")
+    # person_data = Person.objects.values_list("nis", "kelas", "jurusan", "jenis_kelamin", "bio")
+    # user_data = User.objects.values_list("username", "first_name", "last_name")
     
     
-    for i in range(len(person_data)):
-       basicinfo = User.objects.get(username=person_data[i][0])
-       otherinfo = person_data[i]
-       data_profile  = {
-          "nama_lengkap": basicinfo.first_name,
-          "nama_panggilan": basicinfo.last_name,
-          "kelas" : otherinfo[1],
-          "jurusan" : otherinfo[2],
-          "jenis_kelamin" : otherinfo[3],
-          "hobi" : otherinfo[4],
-        }
+    # for i in range(len(person_data)):
+    #    basicinfo = User.objects.get(username=person_data[i][0])
+    #    otherinfo = person_data[i]
+    #    data_profile  = {
+    #       "nama_lengkap": basicinfo.first_name,
+    #       "nama_panggilan": basicinfo.last_name,
+    #       "kelas" : otherinfo[1],
+    #       "jurusan" : otherinfo[2],
+    #       "jenis_kelamin" : otherinfo[3],
+    #       "hobi" : otherinfo[4],
+    #     }
        
-       userperson.append(data_profile)
-       
-       
-    print(userperson)
+    #    userperson.append(data_profile)
       
     return render(request, 'dashboard.html',{'content': request.user, "data_profile": userperson})
   else:

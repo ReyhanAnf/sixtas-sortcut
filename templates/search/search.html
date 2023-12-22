@@ -17,7 +17,7 @@
         <input
           name="search_user"
           type="text"
-          placeholder="Search by NIS or Name"
+          placeholder="{{ message }}"
           class="shadow bg-gray-900 border border-purple-800 rounded w-3/4 m-2 p-3 text-gray-200 leading-tight focus:ring ring-purple-800 transform transition duration-300 ease-in-out"
         />
         <button
@@ -28,20 +28,23 @@
           Cari
         </button>
       </form>
-      <br/>
+      <br />
       <div>
         {% for user in content %}
         <div
           class="flex bg-gray-900 bg-opacity-25 w-full shadow-xl shadow-purple-600 my-1 rounded-lg px-6 pt-4 pb-6 mb-4 text-gray-200 border-b-2 border-gray-700 transform transition hover:scale-105 duration-300 ease-in-out"
+          onClick="window.location = '/search/{{ user.nis }}'"
         >
-          <div class=" bg-grey-700 bg-opacity-100">
-            <img src="{% static 'img/profile.jpeg' %}" class="rounded-full h-12 w-12 ring-1 ring-gray-700 mr-3"/>
+          <div class="bg-grey-700 bg-opacity-100">
+            <img
+              src="{% static 'img/profile.jpeg' %}"
+              class="rounded-full h-12 w-12 ring-1 ring-gray-700 mr-3"
+            />
           </div>
           <div>
             <h2 class="text-xl">{{ user.nama_lengkap }}</h2>
             <h4 class="text-xs text-gray-400">{{ user.nis }}</h4>
           </div>
-
         </div>
         {% endfor %}
         <div>TIPS! Usahakan Mencari dengan kata kunci minimal 4 karakter</div>

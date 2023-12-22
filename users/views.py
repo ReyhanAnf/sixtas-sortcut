@@ -21,7 +21,7 @@ def profil_btn(request):
    
 def profil_view(request, username):
   if username == request.user.username:
-    print(models.Person.objects.get(nis=request.user.username))
+    # print(models.Person.objects.get(nis=request.user.username))
     return render(request, 'person/profil.html', {'user': request.user, 'person':models.Person.objects.get(nis=request.user.username)})
   else:
     return redirect('../' + request.user.username + '/')
@@ -33,7 +33,7 @@ def add_profile(request):
   user_change = models.Person.objects.get(nis=username)
   userAuth_change = User.objects.get(username=nis)
   
-  form = forms.FormProfil(initial={'jenis_kelamin':user_change.jenis_kelamin,'kelas':user_change.kelas, 'jurusan':user_change.jurusan,'hobi':user_change.hobi})
+  form = forms.FormProfil(initial={'jenis_kelamin':user_change.jenis_kelamin,'kelas':user_change.kelas, 'jurusan':user_change.jurusan,'bio':user_change.bio})
   formAuth = lrforms.FormRegister(initial={'email':userAuth_change.email})
   
   if request.method == 'POST':
@@ -42,7 +42,7 @@ def add_profile(request):
     jenis_kelamin = request.POST['jenis_kelamin']
     kelas = request.POST['kelas']
     jurusan = request.POST['jurusan']
-    hobi = request.POST['hobi']
+    bio = request.POST['bio']
     
     
     if nis == username:
@@ -51,7 +51,7 @@ def add_profile(request):
       user_change.jenis_kelamin = jenis_kelamin
       user_change.kelas = kelas
       user_change.jurusan = jurusan
-      user_change.hobi = hobi
+      user_change.bio = bio
       user_change.save()
       userAuth_change.save()
       
@@ -77,7 +77,6 @@ def get_data_user_person(filters="all"):
     
   
   for user in users_data:
-    print(user)
     person_info = Person.objects.get(nis=user.username)
     data_profile  = {
       "nis": user.username,
@@ -86,7 +85,7 @@ def get_data_user_person(filters="all"):
       "kelas" : person_info.kelas,
       "jurusan" : person_info.jurusan,
       "jenis_kelamin" : person_info.jenis_kelamin,
-      "hobi" : person_info.hobi,
+      "bio" : person_info.bio,
     }
     userperson.append(data_profile)
   

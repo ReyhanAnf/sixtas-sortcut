@@ -10,9 +10,6 @@
     <meta name="keywords" content="" />
     <meta name="author" content="" />
 
-    <!-- ajax for form -->
-    <!--  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  -->
     <!-- Font Awesome if you need it
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
   -->
@@ -27,7 +24,7 @@
     class="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover"
     style="background-image: url('https://source.unsplash.com/1L71sPT5XKc')"
   >
-    {% block content %} {% if user %}
+    {% block content %}
 
     <div
       class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0"
@@ -35,7 +32,7 @@
       <!--Main Col-->
       <div
         id="profile"
-        class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0"
+        class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-gray-900 backdrop-blur-md mx-6 lg:mx-0 font-bold"
       >
         <div class="p-4 md:p-12 text-center lg:text-left">
           <!-- Image for mobile view-->
@@ -44,75 +41,30 @@
             id="profileu"
           ></div>
 
-          <h1 class="text-3xl font-bold pt-8 lg:pt-0">{{ user.first_name }}</h1>
-          <div
-            class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-75"
-          >
-            {{ user.username }}
+          <h1 class="text-3xl font-bold pt-8 lg:pt-0">
+            {{ content.nama_lengkap }}
+          </h1>
+          <div class="mx-auto lg:mx-0 w-4/5 pt-3 opacity-50 text-xs">
+            {{ content.nis }}
           </div>
-          <form action="" method="POST" id="edit_profile">
-            {% csrf_token %}
-            <h1
-              class="my-4 text-xl md:text-5xl font-bold leading-tight text-center md:text-left"
+          <div class="mx-auto lg:mx-0 w-4/5 pt-3 opacity-75 font-normal">
+            <i>{{ content.bio }}</i>
+          </div>
+          <p
+            class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start"
+          >
+            <svg
+              class="h-4 fill-current text-green-700 pr-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
             >
-              Lengkapi Profilmu
-            </h1>
-            <div class="mb-4">
-              <label
-                class="hidden block py-2 font-bold mb-2"
-                for="emailaddress"
-              >
-                {{ username }}
-              </label>
-            </div>
-            <div class="mb-4">
-              <label class="block py-2 font-bold mb-2" for="emailaddress">
-                Email
-              </label>
-              {{ formAuth.email }}
-            </div>
-            <div class="mb-4">
-              <label class="block py-2 font-bold mb-2" for="emailaddress">
-                Kelas
-              </label>
-              {{ form.kelas }}
-            </div>
-            <div class="mb-4">
-              <label class="block py-2 font-bold mb-2" for="emailaddress">
-                Jurusan
-              </label>
-              {{ form.jurusan }}
-            </div>
-            <div class="mb-4">
-              <label class="block py-2 font-bold mb-2" for="emailaddress">
-                Jenis Kelamin
-              </label>
-              {{ form.jenis_kelamin }}
-            </div>
-            <div class="mb-4">
-              <label class="block py-2 font-bold mb-2" for="emailaddress">
-                Bio
-              </label>
-              {{ form.bio }}
-            </div>
-
-            <div class="flex items-center justify-between pt-4">
-              <a
-                class="bg-gradient-to-r from-purple-800 to-green-500 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
-                href="{% url 'profil' %}"
-              >
-                Back
-              </a>
-              <button
-                class="bg-gradient-to-r from-purple-800 to-green-500 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
-                type="submit"
-                value="checknis"
-              >
-                Save
-              </button>
-              <div>{{ success }}</div>
-            </div>
-          </form>
+              <path
+                d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm7.75-8a8.01 8.01 0 0 0 0-4h-3.82a28.81 28.81 0 0 1 0 4h3.82zm-.82 2h-3.22a14.44 14.44 0 0 1-.95 3.51A8.03 8.03 0 0 0 16.93 14zm-8.85-2h3.84a24.61 24.61 0 0 0 0-4H8.08a24.61 24.61 0 0 0 0 4zm.25 2c.41 2.4 1.13 4 1.67 4s1.26-1.6 1.67-4H8.33zm-6.08-2h3.82a28.81 28.81 0 0 1 0-4H2.25a8.01 8.01 0 0 0 0 4zm.82 2a8.03 8.03 0 0 0 4.17 3.51c-.42-.96-.74-2.16-.95-3.51H3.07zm13.86-8a8.03 8.03 0 0 0-4.17-3.51c.42.96.74 2.16.95 3.51h3.22zm-8.6 0h3.34c-.41-2.4-1.13-4-1.67-4S8.74 3.6 8.33 6zM3.07 6h3.22c.2-1.35.53-2.55.95-3.51A8.03 8.03 0 0 0 3.07 6z"
+              />
+            </svg>
+            Kelas {{ content.kelas }} {{ content.jurusan }}
+          </p>
+          <p class="pt-8 text-sm">{{ content.jenis_kelamin }}</p>
 
           <div
             class="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-between"
@@ -212,44 +164,6 @@
       <!-- Pin to top right corner -->
     </div>
 
-    {% endif %} {% if not user %}
-    <h1
-      class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left"
-    >
-      Anda
-      <span
-        class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500"
-      >
-        Belum
-      </span>
-      Login !!
-
-      <br />
-      :(
-    </h1>
-
-    {% endif %} {% endblock content %}
-
-    <!-- <script type="text/javascript">
-  $(document).on("submit", "#edit_profile", function(e){
-    e.preventDefault();
-    
-    $.ajax({
-      type:"POST",
-      url:"/users/profile/edit/save",
-      data:{
-        email: $('#email-form').val(),
-        kelas: $('#kelas-form').val(),
-        jurusan: $('#jurusan-form').val(),
-        jenis_kelamin: $('#jk-form').val(),
-        hobi: $('#hobi-form').val(),
-        csrfmiddlewaretoken:$('#csrfmiddlewaretoken').val()
-      },
-      success: function(data){
-        $('#message').html(data)
-      }
-    })
-  })
-</script> -->
+    {% endblock content %}
   </body>
 </html>
