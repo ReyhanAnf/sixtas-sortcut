@@ -1,37 +1,45 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} {% load static %}
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search</title>
-</head>
-<body class="leading-normal tracking-normal text-indigo-400 m-6 bg-cover bg-fixed p-5">
-  {% block content %}
-  <!-- main -->
-  <div>
-    <form 
-    action=""
-    method="POST"
-    class="flex"
-    >
-      {% csrf_token %}
-      <input 
-      type="text" 
-      placeholder="Search by NIS or Name" 
-      class="shadow appearance-none border rounded w-3/4 p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out" 
-      />
-      <button
-      class="w-1/4 bg-gradient-to-r from-purple-800 to-green-500 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
-      type="submit"
-      value="searchsomeone"
-      >
-        Cari
-      </button>
-    </form>
-  </div>
+  </head>
+  <body
+    class="leading-normal tracking-normal text-indigo-400 m-6 bg-cover bg-fixed p-5"
+  >
+    {% block content %}
+    <!-- main -->
+    <div>
+      <form action="" method="POST" class="flex">
+        {% csrf_token %}
+        <input
+          type="text"
+          placeholder="Search by NIS or Name"
+          class="shadow appearance-none border rounded w-3/4 p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+        />
+        <button
+          class="w-1/4 bg-gradient-to-r from-purple-800 to-green-500 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+          type="submit"
+          value="searchsomeone"
+        >
+          Cari
+        </button>
+      </form>
 
-  {% endblock content %}
-</body>
+      <div>
+        {% for user in content %}
+        <div
+          class="bg-gradient-to-r from-purple-900 to-gray-900 opacity-75 w-full shadow-lg my-2 rounded-lg px-8 pt-6 pb-8 mb-4 text-white"
+        >
+          <h2 class="text-xl">{{ user.nama_lengkap }}</h2>
+          <h4 class="text-xl">{{ user.nis }}</h4>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% endblock content %}
+  </body>
 </html>

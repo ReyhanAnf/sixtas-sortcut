@@ -4,6 +4,7 @@ from . import forms
 from . import models
 from logreg import forms as lrforms
 from django.contrib.auth.models import User
+from .models import Person
 
 # Create your views here.
 def users(request):
@@ -60,4 +61,25 @@ def add_profile(request):
     
   return render(request, 'person/edit_profil.html', {'form': form,'formAuth':formAuth, 'username': username, 'succes':""})
 
+
+def get_data_user_person():
+  userperson = [
+      ]
+  person_data = Person.objects.values_list("nis", "kelas", "jurusan", "jenis_kelamin", "hobi")
+    
+  for i in range(len(person_data)):
+      basicinfo = User.objects.get(username=person_data[i][0])
+      otherinfo = person_data[i]
+      data_profile  = {
+        "nis": basicinfo.username,
+        "nama_lengkap": basicinfo.first_name,
+        "nama_panggilan": basicinfo.last_name,
+        "kelas" : otherinfo[1],
+        "jurusan" : otherinfo[2],
+        "jenis_kelamin" : otherinfo[3],
+        "hobi" : otherinfo[4],
+      }
+      
+      userperson.append(data_profile)
+  return userperson
 
