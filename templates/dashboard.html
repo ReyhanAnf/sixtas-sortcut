@@ -33,16 +33,48 @@
       </div>
 
       
-      <div class="border-l-2 border-purple-600 border-opacity-50 rounded-sm pl-1 my-2">
-        <div class="profile-poster flex flex-row text-sm mb-1">
-          <div><img src={% static 'img/profile.jpeg' %} class="w-10 h-10 rounded-full" /></div>
-          <div class="flex flex-col ml-2">
-            <div>Nama Saya</div>
-            <di class="text-xs text-gray-500">21221092</di>
+      
+
+
+      <div id="post-123">
+        <div class="contain-post border-l-2 border-purple-600 border-opacity-75 rounded-sm pl-1 my-3">
+          <div class="profile-poster flex flex-row text-sm mb-1">
+            <div><img src={% static 'img/profile.jpeg' %} class="w-10 h-10 rounded-full" /></div>
+            <div class="flex flex-col ml-2">
+              <div>Nama Saya</div>
+              <di class="text-xs text-gray-500">21221092</di>
+            </div>
+          </div>
+          <div class="contain-content border-b-2 border-gray-700 bg-gray-800 bg-opacity-90 rounded-md py-2 px-3 mb-1 flex">
+            <div class="post-content">
+              <div class="context">
+                <p class="leading-normal text-gray-500 text-base md:text-xl mb-1 text-left">
+                  "{{ content.last_name }} semangat ya!"
+                  <br/>
+                  udahan yu nyemangatin diri sendiri, minimal disemangatin DOII 
+                </p>
+              </div>
+              <div class="metainfo text-xs text-gray-400 mt-3">
+                <div class="time">05.46 PM</div>
+              </div>
+              <div class="stats flex justify-between border-t-2 border-gray-700 text-gray-400 py-1">
+                <div class="answer-meta">1 Answered</div>
+                <div class="flex mt-1">
+                  <div class="answer-view rounded-md px-1 bg-gray-700 mx-1">view</div>
+                  <div class="answer-req rounded-md px-1 bg-gray-700 mx-1">Jawab</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="border-b-2 border-gray-700 bg-gray-800 bg-opacity-90 rounded-md py-2 px-3 mb-1flex">
-          <div class="post-content">
+        Answer
+        <div class="contain-answer rounded-sm pl-1 my-3 flex justify-between">
+          <div class="credible-answer w-3/8 ml-2 pr-2 border-r-2 border-green-600 border-opacity-50 rounded-sm">
+            <button class="">^</button>
+            <div class="credible-value text-center">2</div>
+            <button class="">v</button>
+          </div>
+          <div class="answer-content w-full ml-3 border-b-2 border-gray-700 bg-gray-800 bg-opacity-90 rounded-md py-2 px-3 mb-1">
             <div class="context">
               <p class="leading-normal text-gray-500 text-base md:text-xl mb-1 text-left">
                 "{{ content.last_name }} semangat ya!"
@@ -50,46 +82,41 @@
                 udahan yu nyemangatin diri sendiri, minimal disemangatin DOII 
               </p>
             </div>
-            <div class="metainfo text-xs text-gray-400 mt-3">
+            <div class="metainfo text-xs text-gray-400 mt-3 flex justify-between items-center">
+              <div class="who flex items-center">
+                <div class="ans-photo m-1"><img src={% static 'img/profile.jpeg' %} class="w-6 h-6 rounded-full" /></div>
+                <div class="ans-name">by Reyhan Andrea Firdaus</div>
+              </div>
               <div class="time">05.46 PM</div>
             </div>
-            <div class="stats flex justify-around border-t-2 border-gray-700 text-gray-400">
-              <div class="support">4</div>
-              <div class="answer">2</div>
-              <div class="comment">1</div>
+            <div class="reply-stats flex justify-between border-t-2 border-gray-700 text-gray-400 py-1 text-sm">
+              <div class="answer-meta">2 reply</div>
+              <div class="flex mt-1">
+                <div class="reply-view rounded-md px-1 bg-gray-700 mx-1">view</div>
+                <div class="reply-req rounded-md px-1 bg-gray-700 mx-1">reply</div>
+              </div>
+            </div>
+            <div class="reply-contains">
+              <div class="reply-who1 p-2 rounded-bl-lg border-l-2 border-b-2 border-gray-500 border-opacity-50">
+                <div class="reply-name text-xs text-gray-300">John Smith</div>
+                <div class="reply-content text-sm text-gray-500 pl-2">Benar Works</div>
+              </div>
+              <div class="reply-who1 p-2 rounded-bl-lg border-l-2 border-b-2 border-gray-500 border-opacity-50">
+                <div class="reply-name text-xs text-gray-300">John Smith</div>
+                <div class="reply-content text-sm text-gray-500 pl-2 flex justify-between">
+                  <div class="reply-context text-sm">anjay mabar sleweb asli musik aneh gatau ngasal dah sy mah</div>
+                  <div class="reply-time text-xs text-gray-500 pl-2">12.09</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="border-l-2 border-purple-600 border-opacity-50 rounded-sm pl-1 my-2">
-        <div class="profile-poster flex flex-row text-sm mb-1">
-          <div><img src={% static 'img/profile.jpeg' %} class="w-10 h-10 rounded-full" /></div>
-          <div class="flex flex-col ml-2">
-            <div>Nama Saya</div>
-            <di class="text-xs text-gray-500">21221092</di>
-          </div>
-        </div>
-        <div class="border-b-2 border-gray-700 bg-gray-800 bg-opacity-90 rounded-md py-2 px-3 mb-1flex">
-          <div class="post-content">
-            <div class="context">
-              <p class="leading-normal text-gray-500 text-base md:text-xl mb-1 text-left">
-                "{{ content.last_name }} semangat ya!"
-                <br/>
-                udahan yu nyemangatin diri sendiri, minimal disemangatin DOII 
-              </p>
-            </div>
-            <div class="metainfo text-xs text-gray-400 mt-3">
-              <div class="time">05.46 PM</div>
-            </div>
-            <div class="stats flex justify-around border-t-2 border-gray-700 text-gray-400">
-              <div class="support">4</div>
-              <div class="answer">2</div>
-              <div class="comment">1</div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+      
+
+      
 
       
        {% comment %} <a
@@ -114,9 +141,9 @@
     </div>
 
     <!--Right Col-->
-    <div class="w-full xl:w-3/5 p-12 overflow-hidden">
+    {% comment %} <div class="w-full xl:w-3/5 p-12 overflow-hidden">
       <img class="mx-auto w-full md:w-4/5 transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6" src="{% static 'img/macbook.svg' %}" />
-    </div>
+    </div> {% endcomment %}
     
 
     <div class="fixed bottom-0 left-0 h-12 bg-gray-900 bg-opacity-25 backdrop-blur-2xl w-full flex border-t-2 border-purple-900 py-3 px-2 sm:hidden">
