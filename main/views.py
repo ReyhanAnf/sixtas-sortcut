@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from users.models import Person
+from posts.views import posts_data
 
 
 # Create your views here.
@@ -21,6 +22,8 @@ def index(request):
 
 @login_required(login_url=settings.LOGIN_URL)
 def dashboard(request):
+  postsData = posts_data()
+  
   userperson = [
       ]
   if request.user.username:
@@ -41,8 +44,8 @@ def dashboard(request):
     #     }
        
     #    userperson.append(data_profile)
-      
-    return render(request, 'dashboard.html',{'content': request.user, "data_profile": userperson})
+    
+    return render(request, 'dashboard.html',{'content': request.user, "data_profile": userperson, "cposts" : postsData})
   else:
     return redirect('welcome')
     

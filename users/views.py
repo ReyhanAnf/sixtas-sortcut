@@ -28,7 +28,6 @@ def profil_view(request, username):
     
 def add_profile(request):
   username = request.user.username
-  person = models.Person()
   nis = username
   user_change = models.Person.objects.get(nis=username)
   userAuth_change = User.objects.get(username=nis)

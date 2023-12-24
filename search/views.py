@@ -21,5 +21,5 @@ def search_user(request):
   return render(request, "search/search.html", {'content':users_data, "message":message})
 
 def preview_search_user(request, nis_search):
-  user_search = get_data_user_person(nis_search)[0]
+  user_search = get_data_user_person(nis_search)
   return render(request, "search/preview.html", {'content':user_search})

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'users',
     'logreg',
     'search',
+    'posts',
 ]
 
 # REST_FRAMEWORK = {
@@ -110,10 +111,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'djangodoc',
-        'HOST': 'localhost',#179.169.0.242,
+        'HOST': '179.169.0.254',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'root',
+        'OPTIONS': {
+            "init_command": "SET foreign_key_checks=0",
+        }
     }
 }
 
