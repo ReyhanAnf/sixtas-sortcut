@@ -28,3 +28,18 @@ function view_reply(answer_id){
     get_button_view.innerHTML = 'view';
   }
 }
+
+
+
+const actualBtn = document.getElementById('dropzone-files');
+
+const fileChosen = document.getElementById('file-chosen');
+
+actualBtn.addEventListener('change', function(){
+  fileChosen.innerHTML += `<li
+  class="w-full border-b-2 border-neutral-100 border-opacity-100 py-4 dark:border-opacity-50">
+  ${this.files[0].name}
+</li>`;
+
+alert(this.file.name)
+})

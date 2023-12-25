@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ judul }}</title>
+</head>
+<body class="leading-normal tracking-normal text-indigo-400 my-3 bg-cover bg-fixed py-3">
+  {% block content %}
+
+  <!--Main-->
+  <div class="container pt-5 md:pt-8 mx-auto flex flex-wrap flex-col md:flex-row">
+
+    <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+    <!--Left Col-->
+      <div>
+        <h1 class="my-4 text-3xl md:text-5xl opacity-75 font-bold leading-tight text-center md:text-left">
+          Postingan
+        </h1>
+        <p class="leading-normal text-gray-500 text-base md:text-2xl mb-8 text-center md:text-left">
+          Posting Pertanyaan, Catatan atau Info apapun yang ingin kamu share!!
+        </p>
+      </div>
+
+      <div class="flex items-center my-4">
+        <button
+            class="w-3/4 border-2 border-green-200 border-opacity-50 bg-transparent hover:from-pink-500 hover:to-green-500 text-gray-300 font-bold py-2 px-4 mx-auto rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out items-center"
+            value="checknis"
+            onClick="window.location = '/posting/create' "
+          >
+            + Buat Postingan
+          </button>
+      </div>
+
+      {% for cpost in cposts %}
+
+        <div id="{{ cpost.post_id }}">
+          <div class="contain-post border-l-2 border-purple-600 border-opacity-75 rounded-sm pl-1 my-3 w-full">
+            <div class="profile-poster flex flex-row text-sm mb-1">
+              <div><img src={% static 'img/profile.jpeg' %} class="w-10 h-10 rounded-full" /></div>
+              <div class="flex flex-col ml-2">
+                <div> {{cpost.user_author.nama_lengkap}} </div>
+                <di class="text-xs text-gray-500">{{ cpost.author_id }}</di>
+              </div>
+            </div>
+            <div class="contain-content border-b-2 border-gray-700 bg-gray-800 bg-opacity-90 rounded-md py-2 px-3 mb-1 w-full">
+              <div class="post-content">
+                <div class="context">
+                  <p class="leading-normal text-gray-500 text-base md:text-xl mb-1 text-left">
+                    {{ cpost.content_post }}
+                  </p>
+                </div>
+                <div class="metainfo text-xs text-gray-400 mt-3">
+                  <div class="time">{{ cpost.post_at }}</div>
+                </div>
+                <div class="stats flex justify-between border-t-2 border-gray-700 text-gray-400 py-1">
+                  <div class="answer-meta">1 Answered</div>
+                  <div class="flex mt-1">
+                    <button id="answer-view-{{ cpost.post_id }}" class="answer-view rounded-md px-1 bg-gray-700 mx-1" onClick="view_answer('{{ cpost.post_id }}')">view</button>
+                    <div class="answer-req rounded-md px-1 bg-gray-700 mx-1">Edit</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          <div id="answer-{{ cpost.post_id }}" class="hidden">
+            <div class="ml-7 cans">Answer</div>
+            {% for answer in cpost.answers %}
+
+            <div class="contain-answer rounded-sm pl-1 my-3 flex justify-between">
+              <div class="credible-answer w-3/8 ml-2 pr-2 border-r-2 border-green-600 border-opacity-50 rounded-sm">
+                <button class="">^</button>
+                <div class="credible-value text-center">2</div>
+                <button class="">v</button>
+              </div>
+              <div class="answer-content w-full ml-3 border-b-2 border-gray-700 bg-gray-800 bg-opacity-90 rounded-md py-2 px-3 mb-1">
+                <div class="context">
+                  <p class="leading-normal text-gray-500 text-base md:text-xl mb-1 text-left">
+                    {{ answer.content_answer }}
+                  </p>
+                </div>
+                <div class="metainfo text-xs text-gray-400 mt-3 flex justify-between items-center">
+                  <div class="who flex items-center">
+                    <div class="ans-photo m-1"><img src={% static 'img/profile.jpeg' %} class="w-6 h-6 rounded-full" /></div>
+                    <div class="ans-name">by {{ answer.user_answer.nama_lengkap }}</div>
+                  </div>
+                  <div class="time">{{ answer.answer_at }}</div>
+                </div>
+                <div class="reply-stats flex justify-between border-t-2 border-gray-700 text-gray-400 py-1 text-sm">
+                  <div class="answer-meta">2 reply</div>
+                  <div class="flex mt-1">
+                    <button id="reply-view-{{ answer.answer_id }}" class="reply-view rounded-md px-1 bg-gray-700 mx-1" onClick="view_reply('{{ answer.answer_id }}')">view</button>
+                    <div class="reply-req rounded-md px-1 bg-gray-700 mx-1">reply</div>
+                  </div>
+                </div>
+
+                <div id="reply-{{ answer.answer_id }}" class="hidden">
+                  {% for reply in answer.replies %}
+
+                  <div class="reply-contains">
+                    <div class="reply-who1 p-2 rounded-bl-lg border-l-2 border-b-2 border-gray-500 border-opacity-50">
+                      <div class="reply-name text-xs text-gray-300">{{ reply.user_reply.nama_lengkap }}</div>
+                      <div class="reply-content text-sm text-gray-500 pl-2 flex justify-between">
+                        <div class="reply-context text-sm">{{ reply.content_reply }}</div>
+                        <div class="reply-time text-xs text-gray-500 pl-2">{{ reply.reply_at }}</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            
+            {% endfor %}
+            
+          </div>
+        </div>
+
+        {% endfor %}
+    </div>
+
+  </div>
+  <script src="{% static 'js/view-elpost.js' %}"></script>
+
+
+  {% endblock content %}
+</body>
+</html>

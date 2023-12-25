@@ -18,3 +18,7 @@
 #profileu{
   background-image: url("../img/profile.jpeg");
 }
+
+#dropzone-files::file-selector-button {
+  background: red;
+}

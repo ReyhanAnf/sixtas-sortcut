@@ -19,6 +19,7 @@ from django.urls import path, include
 import main
 import users
 from users import views as users
+from posts import views as posts
 from rest_framework import routers
 #from api.views import *
 
@@ -33,6 +34,7 @@ urlpatterns = [
     path('user/', include('logreg.urls')),
     #path('api/', include(router.urls)),
     path('search/', include('search.urls') , name="search"),
+    path('posting/', include('posts.urls')),
     
     path('<username>/', users.profil_view),
     #path('api-auth/', include('rest_framework.urls', namespace="rest_framework")),

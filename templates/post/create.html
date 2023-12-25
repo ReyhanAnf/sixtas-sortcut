@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ judul }}</title>
+
+    <link rel="stylesheet" href="{% static 'css/bg.css' %}"/> 
+</head>
+<body class="leading-normal tracking-normal text-indigo-400 my-3 bg-cover bg-fixed py-3">
+  {% block content %}
+
+  <!--Main-->
+  <div class="container pt-5 md:pt-8 mx-auto flex flex-wrap flex-col md:flex-row">
+
+    <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+    <!--Left Col-->
+    <h1
+    class="my-4 text-xl md:text-5xl font-bold leading-tight text-center md:text-left"
+      >
+        Post Your Idea
+      </h1>
+      <div class="mb-4">
+        <!-- <label
+          class="hidden block py-2 font-bold mb-2"
+          for="emailaddress"
+          >
+          {{ username }}
+        </label> -->
+      </div>
+      <form action="" method="POST" id="create_post" enctype="multipart/form-data">
+        {% csrf_token %}
+      <div class="mb-4">
+        <label class="block py-2 font-bold mb-2" for="emailaddress">
+          Content
+        </label>
+        {{ formPost.content_post }}
+      </div>
+      <!-- <div class="mb-4">
+        <label class="block py-2 font-bold mb-2" for="dropzone-files">
+          <div class="flex flex-col items-center justify-center pt-5 pb-6 hover:bg-blue-200">
+            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+            </svg>
+            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+        </div>
+        </label>
+          {{ formPost.image_post }}
+        <ul class="w-full" id="file-chosen">
+          
+        </ul>
+        
+      </div> -->
+
+      <div class="flex items-center w-full">
+        <button
+          class="w-3/4 border-2 border-green-200 border-opacity-50 bg-transparent hover:from-pink-500 hover:to-green-500 text-gray-300 font-bold py-2 px-4 mx-auto rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out items-center"  
+          type="submit"
+          value="checknis"
+        >
+          Posting
+        </button>
+        <!-- <div>{{ success }}</div> -->
+      </div>
+    </form>
+
+      
+    </div>
+
+  </div>
+  <script src="{% static 'js/view-elpost.js' %}"></script>
+
+  {% endblock content %}
+</body>
+</html>
