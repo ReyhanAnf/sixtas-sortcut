@@ -107,17 +107,27 @@ WSGI_APPLICATION = 'sixtasSortcut.wsgi.application'
 # }
 
 # DB for MOBILES
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'djangodoc',
+#         'HOST': '179.169.0.254',
+#         'PORT': '3306',
+#         'USER': 'root',
+#         'PASSWORD': 'root',
+#         'OPTIONS': {
+#             "init_command": "SET foreign_key_checks=0",
+#         }
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangodoc',
-        'HOST': '179.169.0.254',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'OPTIONS': {
-            "init_command": "SET foreign_key_checks=0",
-        }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'railway', 
+        'USER': 'postgres',
+        'PASSWORD': 'dB1-c44f6eC6*Bf3FF-1c3fcFF1BC3*c',
+        'HOST': 'monorail.proxy.rlwy.net', 
+        'PORT': '40300',
     }
 }
 

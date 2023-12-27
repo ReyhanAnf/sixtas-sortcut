@@ -19,8 +19,6 @@ from django.urls import path, include
 import main
 import users
 from users import views as users
-from posts import views as posts
-from rest_framework import routers
 #from api.views import *
 
 # router = routers.DefaultRouter()
