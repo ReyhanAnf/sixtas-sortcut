@@ -23,7 +23,7 @@ def index(request):
 @login_required(login_url=settings.LOGIN_URL)
 def dashboard(request):
   postsData = posts_data()
-  print(postsData)
+  
 
   userperson = [
       ]

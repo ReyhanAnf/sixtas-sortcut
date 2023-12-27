@@ -15,7 +15,8 @@ class Posts(models.Model):
 class Answers(models.Model):
     answer_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # post_id = models.ForeignKey(Posts, on_delete=models.CASCADE, to_field='post_id')
-    post_id = models.CharField(max_length=100)
+    #post_id = models.CharField(max_length=100)
+    post = models.ForeignKey(Posts, on_delete=models.CASCADE)
     answerer_id = models.CharField(max_length=100)
     up = models.IntegerField(default=0)
     down = models.IntegerField(default=0)
@@ -27,7 +28,8 @@ class Answers(models.Model):
 class Replies(models.Model):
     reply_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # answer_id = models.ForeignKey(Answers, on_delete=models.CASCADE, to_field='answer_id')
-    answer_id = models.CharField(max_length=50)
+    #answer_id = models.CharField(max_length=50)
+    answer = models.ForeignKey(Answers, on_delete=models.CASCADE)
     replier_id = models.CharField(max_length=100)
     content_reply = models.TextField()
     reply_at = models.DateField(auto_now_add=True, editable=False)

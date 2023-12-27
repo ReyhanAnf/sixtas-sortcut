@@ -43,10 +43,14 @@ def posts_data(users="all"):
           ##################################### Akhir Reply  #################################
         
         answer_dict["replies"] = reply_list
-        
+        answer_dict["count"] = len(reply_list)
+        answer_dict["vote"] = answer_dict["up"] - answer_dict["down"]
         
       post_dict["answers"] = answers_list
       post_dict["user_author"] = get_data_user_person(post_dict["author_id"])[0]
+
+
+      post_dict["count"] = len(answers_list)
       
       all_content.append(post_dict)
     
@@ -92,10 +96,14 @@ def posts_data(users="all"):
           ##################################### Akhir Reply  #################################
         
         answer_dict["replies"] = reply_list
+        answer_dict["count"] = len(reply_list)
+        answer_dict["vote"] = answer_dict.up - answer_dict.down
         
         
       post_dict["answers"] = answers_list
       post_dict["user_author"] = get_data_user_person(post_dict["author_id"])[0]
+
+      post_dict["count"] = len(answers_list)
       
       auth_content.append(post_dict)
     
@@ -140,11 +148,14 @@ def posts_data(users="all"):
           ##################################### Akhir Reply  #################################
         
         answer_dict["replies"] = reply_list
-        
+        answer_dict["count"] = len(reply_list)
+        answer_dict["vote"] = answer_dict.up - answer_dict.down 
         
       post_dict["answers"] = answers_list
       post_dict["user_author"] = get_data_user_person(post_dict["author_id"])[0]
       
+      post_dict["count"] = len(answers_list)
+
       onepost.append(post_dict)
     
     return onepost
