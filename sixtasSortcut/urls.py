@@ -37,3 +37,5 @@ urlpatterns = [
     path('<username>/', users.profil_view),
     #path('api-auth/', include('rest_framework.urls', namespace="rest_framework")),
 ]
+
+

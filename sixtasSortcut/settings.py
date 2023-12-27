@@ -72,6 +72,11 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://sixtas-sortcut-production.up.railway.app/',
+    '*'
+]
+
 ROOT_URLCONF = 'sixtasSortcut.urls'
 
 TEMPLATES = [
@@ -173,9 +178,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
 
 
 LOGIN_URL = 'welcome'
@@ -191,6 +196,3 @@ MEDIA_URL = '/media/'
 # Path where media is stored  
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://sixtas-sortcut-production.up.railway.app/'
-]
