@@ -33,7 +33,7 @@ def register_view(request, username):
         
         if username and password == confirm_password and first_name and last_name:
             User.objects.create_user(username=username, password=password, first_name=first_name, last_name=last_name)
-            Person.objects.create(nis=username, jenis_kelamin="", kelas="", jurusan="", hobi="")
+            Person.objects.create(nis=username, jenis_kelamin="", kelas="", jurusan="", bio="")
         else:
           status = True
           return render(request, 'login/register.html', {'form': form, 'user_new':user_new, 'status': status})
