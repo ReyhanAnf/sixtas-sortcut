@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-_5-ma#_1)mr%k$k*2g_nmua(+4l4dal=9c@jiay60gf1e8+8-g
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+
+
 
 
 # Application definition
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'logreg',
     'search',
     'posts',
+    'predictfakenews'
 ]
 
 # REST_FRAMEWORK = {
@@ -112,29 +114,28 @@ WSGI_APPLICATION = 'sixtasSortcut.wsgi.application'
 # }
 
 # DB for MOBILES
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'djangodoc',
-#         'HOST': '179.169.0.254',
-#         'PORT': '3306',
-#         'USER': 'root',
-#         'PASSWORD': 'root',
-#         'OPTIONS': {
-#             "init_command": "SET foreign_key_checks=0",
-#         }
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'railway', 
-        'USER': 'postgres',
-        'PASSWORD': 'dB1-c44f6eC6*Bf3FF-1c3fcFF1BC3*c',
-        'HOST': 'monorail.proxy.rlwy.net', 
-        'PORT': '40300',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djangodoc',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'root',
+        'OPTIONS': {
+            "init_command": "SET foreign_key_checks=0",
+        }
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'railway', 
+#         'USER': 'postgres',
+#         'PASSWORD': 'dB1-c44f6eC6*Bf3FF-1c3fcFF1BC3*c',
+#         'HOST': 'monorail.proxy.rlwy.net', 
+#         'PORT': '40300',
+#     }
+# }
 
 
 ALLOWED_HOSTS = ["*"]
@@ -174,7 +175,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # STATICFILES_DIRS = [

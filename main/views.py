@@ -6,47 +6,54 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from users.models import Person
 from posts.views import posts_data
+from predictfakenews import forms as pf
+from predictfakenews.views import predictPage
 
 
 # Create your views here.
 def index(request):
     form = forms.FormLogin()
-    if request.method == 'POST':
-        username = request.POST['username']
+    if request.method == 'POST' and request.POST.get("loginbtn") == "loginbtn":
+      print(request.POST.get("loginbtn"))
+      username = request.POST['username']
+      
+      if User.objects.filter(username=username).exists():
+          return redirect('../user/login/' + username + '/')
+      else:
+          return redirect('../user/register/' + username + '/')
+    
+    
+    postsData = posts_data()
+    formpred = pf.FormPredict()
+    predict = predictPage(request)
+    
+    if predict != None:
+      if predict[1] == 1 :
+        predict[1]="Hoaks"
+      elif predict[1] == 0:
+        predict[1] = "Real"
         
-        if User.objects.filter(username=username).exists():
-            return redirect('../user/login/' + username + '/')
-        else:
-            return redirect('../user/register/' + username + '/')
-    return render(request, 'index.html', {'form': form, 'content': {'title':'Reyhan Anf'}})
+      return render(request, 'index.html', {'form': form, 'content': {'title':'Reyhan Anf'}, "form_pred" : formpred, "scrap": predict[0], "prediksi": predict[1], "cposts" : postsData})
+    else:
+      return render(request, 'index.html', {'form': form, 'content': {'title':'Reyhan Anf'}, "form_pred" : formpred, "scrap": None, "prediksi": None, "cposts" : postsData})
+    
 
 @login_required(login_url=settings.LOGIN_URL)
 def dashboard(request):
   postsData = posts_data()
   
-
-  userperson = [
-      ]
   if request.user.username:
-    # person_data = Person.objects.values_list("nis", "kelas", "jurusan", "jenis_kelamin", "bio")
-    # user_data = User.objects.values_list("username", "first_name", "last_name")
+    form = pf.FormPredict()
+    predict = predictPage(request)
     
-    
-    # for i in range(len(person_data)):
-    #    basicinfo = User.objects.get(username=person_data[i][0])
-    #    otherinfo = person_data[i]
-    #    data_profile  = {
-    #       "nama_lengkap": basicinfo.first_name,
-    #       "nama_panggilan": basicinfo.last_name,
-    #       "kelas" : otherinfo[1],
-    #       "jurusan" : otherinfo[2],
-    #       "jenis_kelamin" : otherinfo[3],
-    #       "hobi" : otherinfo[4],
-    #     }
-       
-    #    userperson.append(data_profile)
-    
-    return render(request, 'dashboard.html',{'content': request.user, "data_profile": userperson, "cposts" : postsData})
+    if predict != None:
+      if predict[1] == 1 :
+        predict[1]="Hoaks"
+      elif predict[1] == 0:
+        predict[1] = "Real"
+      return render(request, 'dashboard.html',{'content': request.user, "cposts" : postsData, "form": form, "scrap": predict[0], "prediksi": predict[1]})
+    else:
+      return render(request, 'dashboard.html',{'content': request.user, "cposts" : postsData, "form": form, "scrap": None, "prediksi": None})
   else:
     return redirect('welcome')
     

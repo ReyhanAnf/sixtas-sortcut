@@ -19,6 +19,7 @@ from django.urls import path, include
 import main
 import users
 from users import views as users
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 #from api.views import *
 
 # router = routers.DefaultRouter()
@@ -39,3 +40,4 @@ urlpatterns = [
 ]
 
 
+urlpatterns += staticfiles_urlpatterns()

@@ -31,6 +31,7 @@ def posts_data(users="all"):
         ####################################### Bagian reply ########################################
         
         replies = Replies.objects.filter(answer_id=answer_dict['answer_id'])
+        print("jawaban", replies)
         reply_list = []
         for reply in replies:
           reply_dict = {}
@@ -44,7 +45,7 @@ def posts_data(users="all"):
         
         answer_dict["replies"] = reply_list
         answer_dict["count"] = len(reply_list)
-        answer_dict["vote"] = answer_dict["up"] - answer_dict["down"]
+        answer_dict["vote"] = 5 #answer_dict["up"] - answer_dict["down"]
         
       post_dict["answers"] = answers_list
       post_dict["user_author"] = get_data_user_person(post_dict["author_id"])[0]
@@ -97,7 +98,7 @@ def posts_data(users="all"):
         
         answer_dict["replies"] = reply_list
         answer_dict["count"] = len(reply_list)
-        answer_dict["vote"] = answer_dict.up - answer_dict.down
+        answer_dict["vote"] = 5 # answer_dict.up - answer_dict.down
         
         
       post_dict["answers"] = answers_list
@@ -165,7 +166,6 @@ def posts_data(users="all"):
 # Posting PAGE
 def posting(request):
   postData = posts_data(request)
-  
   return render(request, 'post/posting.html', {'cposts': postData})
 
 def create_post(request):

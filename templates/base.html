@@ -28,13 +28,13 @@
     </script>
   </head>
 
-  <body class="bg-gray-900 leading-normal tracking-normal text-indigo-400 my-6 mx-3 bg-cover bg-fixed">
+  <body class="bg-gray-900 leading-normal tracking-normal text-indigo-400 my-6 mx-3 bg-cover bg-fixed px-2">
     <div class="h-full">
       <!--Nav-->
       <div class="w-full container mx-auto">
         <div class="w-full flex items-center justify-between">
           <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="{% url 'main' %}">
-            Sixtas<span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">Shortcut</span>
+            Predict<span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">News</span>
           </a>
 
           <div class="flex w-1/2 justify-end content-center">
@@ -63,7 +63,7 @@
       {% endblock content %}
 
         <!--Footer-->
-        <div class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
+        <div class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in" id="bottom">
           <a class="text-gray-500 no-underline hover:no-underline" href="#">&copy; App 2023</a>
           - by
           <a class="text-gray-500 no-underline hover:no-underline" href="https://www.erentech.my.id">Reyn</a>
@@ -78,6 +78,8 @@
 	<script src="https://unpkg.com/tippy.js@4"></script>
 	
 	<script src="{% static 'js/darkmode.js' %}"></script>
+  <script src="{% static 'js/predictword.js' %}"></script>
+  <script src="{% static 'js/view-elpost.js' %}"></script>
 
   </body>
 </html>
