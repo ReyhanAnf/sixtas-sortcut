@@ -7,7 +7,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=0.75">
   <title>{{ judul }}</title>
-  <link rel="stylesheet" href="{% static 'css/animation.css' %}"/>
+  <link href="{% static 'css/output-2.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/animation.css' %}" rel="stylesheet" />
 </head>
 
 <body class="leading-normal tracking-normal text-indigo-400 my-3 bg-cover bg-fixed py-3">
@@ -72,19 +73,31 @@
       {% if prediksi != None %}
 
       <div class="output w-full md:p-12">
-        <div class="">
-          <h4 class="text-blue-300 typewriter my-4 text-md md:text-lg text-white opacity-75 font-bold leading-tight text-center md:text-left">Predict</h4>
-          <div class="text-white bg-slate-200 rounded-xl text-white text-lg space-y-1 shadow-2xl p-4 w-full h-40 -ml-0 transition-all text-center overflow-hidden">
-            <img src="{% static 'img/scanner.gif' %}" width="500" height="100" class="h-full" />
+        <h4 class="text-blue-300 typewriter my-4 text-md lg:text-lg text-white opacity-75 font-bold leading-tight text-center lg:text-left">Predict</h4>
+          <div id="result-part" class="text-white bg-slate-200 rounded-xl text-white text-lg space-y-1 shadow-xl p-4 w-full h-auto -ml-0 transition-all text-center">
+            <div class="predict-percent hidden">
+              <canvas id="chart" width="400" height="400"></canvas>
+              <input value="{{prediksi}}" class="hidden" name="score" id="score" />
+              <div class="text-xl font-bold p-2" >{{prediksi}} % Hoaks</div>
+            </div>
+            <div class="w-full h-96 rounded-md p-4 py-8" id="process-pred">
+              <div class="relative h-full w-7 bg-cyan-200 opacity-40 shadow-xl shadow-cyan-300 backdrop-blur-xl rounded-full scanning z-20">
+              </div>
+              <div class="relative left-1/2 -top-1/2 -translate-x-1/2 lg:w-1/4 w-1/2 bg-slate-500 p-4 -translate-y-1/2 items-center h-3/4 rounded-xl shadow-lg shadow-blue-300 transition-all">
+                <div class="w-full h-10 border-y-8 border-slate-700 rounded-sm my-4"></div>
+                <div class="w-full h-10 border-y-8 border-slate-700 rounded-sm my-4"></div>
+                <div class="w-full h-10 border-y-8 border-slate-700 rounded-sm my-4"></div>
+                <div class="text-cyan-300 text-lg font-bold w-full tracking-wide mx-auto animate-pulse transition-all duration-100" id="text-scan">Scanning</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="">
-          <h4 class="text-blue-300 typewriter my-4 text-md md:text-lg text-white opacity-75 font-bold leading-tight text-center md:text-left relative">Preview Target Page</h4>
+          <h4 class="text-blue-300  my-4 text-md lg:text-lg text-white opacity-75 font-bold leading-tight text-center lg:text-left relative">Preview Target Page</h4>
           <input type="hidden" id="raw-scrape" name="raw-scrape" value="{{ scrap }}">
           <div class="transit hidden"></div>
           <div class="content-scrape rounded-xl text-white text-md space-y-1 shadow-2xl p-4 w-full -ml-0 transition-all max-h-screen overflow-y-scroll" id="chat-scrap">
           </div>
-        </div>
       </div>
       
       {% endif %}

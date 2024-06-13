@@ -7,6 +7,17 @@
     cursor .4s stop-end infinite alternate;
 }
 
+.scanning {
+  animation: anim 3s linear infinite;
+}
+
+/* #text-scan{
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: dot 2s linear infinite ;
+} */
+
 @keyframes cursor {
   50% { border-color: transparent;}
 }
@@ -14,4 +25,18 @@
 @keyframes typing {
   from { width: 0 }
   to { width: 100%}
+}
+
+@keyframes anim {
+  0%, 100% {
+    left: 0;
+  }
+  50% {
+    left: 90%;
+  }
+}
+
+@keyframes dot {
+  0% { width: 0 }
+  100% { width: 100%}
 }

@@ -28,11 +28,6 @@ def index(request):
     predict = predictPage(request)
     
     if predict != None:
-      if predict[1] == 1 :
-        predict[1]="Hoaks"
-      elif predict[1] == 0:
-        predict[1] = "Real"
-        
       return render(request, 'index.html', {'form': form, 'content': {'title':'Reyhan Anf'}, "form_pred" : formpred, "scrap": predict[0], "prediksi": predict[1], "cposts" : postsData})
     else:
       return render(request, 'index.html', {'form': form, 'content': {'title':'Reyhan Anf'}, "form_pred" : formpred, "scrap": None, "prediksi": None, "cposts" : postsData})
@@ -47,10 +42,6 @@ def dashboard(request):
     predict = predictPage(request)
     
     if predict != None:
-      if predict[1] == 1 :
-        predict[1]="Hoaks"
-      elif predict[1] == 0:
-        predict[1] = "Real"
       return render(request, 'dashboard.html',{'content': request.user, "cposts" : postsData, "form": form, "scrap": predict[0], "prediksi": predict[1]})
     else:
       return render(request, 'dashboard.html',{'content': request.user, "cposts" : postsData, "form": form, "scrap": None, "prediksi": None})
