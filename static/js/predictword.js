@@ -39,7 +39,7 @@ function typingp(element, transit, text, i = 0){
       percent_pred.classList.remove("hidden")
       clearTimeout(a)
       return;
-    }, 3000)
+    }, 2000)
   }
 
   if(i == Math.floor(text.length / 5 * 1 )){
@@ -61,7 +61,7 @@ function typingp(element, transit, text, i = 0){
       
       element.innerHTML += `<br /> <br />`
       typingp(element, transit, text, i + 1)
-    }, 5 * transit_data.length)
+    }, 6 * transit_data.length)
   }
 
 
