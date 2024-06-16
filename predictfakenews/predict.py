@@ -26,9 +26,8 @@ def scrape(url):
   title = str(bs4.title).split("<title>")[1].split("</title>")[0]
   text = bs4.text
   to_predict = [title, text]
-  titleraw = str(bs4.title)
   
-  return {"raw": raw, "title" : titleraw, "to_predict": to_predict}
+  return {"raw": raw, "title" : title, "to_predict": to_predict}
 
 def remove_punk(word):
   lower_string = word.lower()
