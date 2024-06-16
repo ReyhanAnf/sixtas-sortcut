@@ -174,7 +174,7 @@ def create_post(request):
     content_post = request.POST["content_post"]
     image_post = '' #request.POST["image_post"]
     
-    Posts.objects.create(author_id=author_id, content_post=content_post, image=image_post)
+    Posts.objects.create(author_id=author_id, content_post=content_post)
     return redirect('../')
   return render(request, 'post/create.html', {'formPost': FormPost})
 
