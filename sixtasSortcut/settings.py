@@ -116,14 +116,8 @@ WSGI_APPLICATION = 'sixtasSortcut.wsgi.application'
 # DB for MOBILES
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangodoc',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'root',
-        'OPTIONS': {
-            "init_command": "SET foreign_key_checks=0",
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 # DATABASES = {
