@@ -28,9 +28,9 @@ def index(request):
     predict = predictPage(request)
     
     if predict != None:
-      return render(request, 'index.html', {'form': form, 'content': {'title':'Reyhan Anf'}, "form_pred" : formpred, "scrap": predict[0], "prediksi": predict[1], "cposts" : postsData})
+      return render(request, 'index.html', {'form': form, 'content': {'title':'Reyhan Anf'}, "form_pred" : formpred, "scrap": predict[0], "title": predict[1], "prediksi": predict[2], "cposts" : postsData})
     else:
-      return render(request, 'index.html', {'form': form, 'content': {'title':'Reyhan Anf'}, "form_pred" : formpred, "scrap": None, "prediksi": None, "cposts" : postsData})
+      return render(request, 'index.html', {'form': form, 'content': {'title':'Reyhan Anf'}, "form_pred" : formpred, "scrap": None, "title": None, "prediksi": None, "cposts" : postsData})
     
 
 @login_required(login_url=settings.LOGIN_URL)
@@ -42,9 +42,9 @@ def dashboard(request):
     predict = predictPage(request)
     
     if predict != None:
-      return render(request, 'dashboard.html',{'content': request.user, "cposts" : postsData, "form": form, "scrap": predict[0], "prediksi": predict[1]})
+      return render(request, 'dashboard.html',{'content': request.user, "cposts" : postsData, "form": form, "scrap": predict[0], "title": predict[1], "prediksi": predict[2]})
     else:
-      return render(request, 'dashboard.html',{'content': request.user, "cposts" : postsData, "form": form, "scrap": None, "prediksi": None})
+      return render(request, 'dashboard.html',{'content': request.user, "cposts" : postsData, "form": form, "scrap": None, "title": None, "prediksi": None})
   else:
     return redirect('welcome')
     

@@ -21,15 +21,14 @@ model_ec = joblib.load(os.path.join(BASE_DIR, "predictfakenews/ml/model/model_en
 def scrape(url):
   content_url = reqs.get(url)
   bs4 = BeautifulSoup(content_url.content, "html.parser")
-  contentraw = bs4.find_all("p")
+  raw = bs4.find_all("p")
   
   title = str(bs4.title).split("<title>")[1].split("</title>")[0]
   text = bs4.text
   to_predict = [title, text]
   titleraw = str(bs4.title)
-  raw = titleraw + contentraw
   
-  return {"raw": raw, "to_predict": to_predict}
+  return {"raw": raw, "title" : titleraw, "to_predict": to_predict}
 
 def remove_punk(word):
   lower_string = word.lower()
@@ -88,7 +87,7 @@ def predict(url, text):
     result =  (predi_t1 + predi_c1 + prede_ts1 + prede_cs1 + predi_t2 + predi_c2 + prede_ts2 + prede_cs2) / 8 * 100
     print(result , "% Hoaks")
     
-    return [content["raw"], result]
+    return [content["raw"], content["title"], result]
   
   elif len(text) > 10 :
     veci_t = vectokenize(vector_it, [text])
