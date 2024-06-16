@@ -21,11 +21,13 @@ model_ec = joblib.load(os.path.join(BASE_DIR, "predictfakenews/ml/model/model_en
 def scrape(url):
   content_url = reqs.get(url)
   bs4 = BeautifulSoup(content_url.content, "html.parser")
-  raw = bs4.find_all("p")
+  contentraw = bs4.find_all("p")
   
   title = str(bs4.title).split("<title>")[1].split("</title>")[0]
   text = bs4.text
   to_predict = [title, text]
+  titleraw = str(bs4.title)
+  raw = titleraw + contentraw
   
   return {"raw": raw, "to_predict": to_predict}
 
@@ -97,5 +99,5 @@ def predict(url, text):
     return [raw, predi_t * 1/1 * 100]
   
   else:
-    return [f"<p>Nothing</p>", 100]
+    return [f"<p>Text should minimum 10 caracter</p>", 100]
 
