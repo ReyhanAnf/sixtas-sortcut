@@ -150,7 +150,7 @@ def posts_data(users="all"):
         
         answer_dict["replies"] = reply_list
         answer_dict["count"] = len(reply_list)
-        answer_dict["vote"] = answer_dict.up - answer_dict.down 
+        answer_dict["vote"] = 0 
         
       post_dict["answers"] = answers_list
       post_dict["user_author"] = get_data_user_person(post_dict["author_id"])[0]
