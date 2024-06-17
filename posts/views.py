@@ -180,7 +180,7 @@ def create_post(request):
 
 
 def create_answer(request, postId):
-  postEmbed = posts_data(postId)
+  postEmbed = posts_data(postId)[0]
   if request.method == 'POST':
     post_id = postId
     answerer_id = request.user.username
